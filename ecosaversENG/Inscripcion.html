@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration - ECOSAVERS</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        /* Correction to see the text in the form within the light area */
+        .espacio-section .cyan-form input, 
+        .espacio-section .cyan-form textarea,
+        .espacio-section .cyan-form select {
+            color: var(--ink) !important; /* Dark color to be readable */
+            background: rgba(0, 180, 216, 0.05);
+            border: 1.5px solid var(--sky-border);
+        }
+        .espacio-section .cyan-form input::placeholder, 
+        .espacio-section .cyan-form textarea::placeholder {
+            color: rgba(13, 27, 42, 0.4);
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+    <div class="logo-area">
+    <img src="../img/ECOSAVERSLOGO.png" alt="ECOSAVERS" class="brand-logo-img">
+    </div>
+    <ul class="nav-links">
+        <li><a href="../index.html">HOME</a></li>
+        <li class="dropdown">
+            <a href="ofertes.html" class="dropbtn">OUR OFFERS</a>
+            <ul class="dropdown-content">
+                <li><a href="activitats.html">ACTIVITIES</a></li>
+                <li><a href="tallers.html">WORKSHOPS</a></li>
+                <li><a href="campus.html">CAMPUS</a></li>
+            </ul>
+        </li>
+        <li><a href="ecosavers.html">ECOSAVERS</a></li>
+        <li><a href="centres_educatius.html">SCHOOLS</a></li>
+        <li><a href="contacte.html">CONTACT</a></li>
+    </ul>
+    <div class="navbar-right">
+        <div class="lang-switcher">
+            <button class="lang-current">EN ▾</button>
+            <ul class="lang-dropdown">
+                <li><a href="../Inscripcion.html">CA</a></li>
+                <li><a href="../ecosaversCAST/InscripcionCAST.html">ES</a></li>
+                <li><a href="#" class="lang-active">EN</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+    <header class="hero-section">
+        <div class="hero-container">
+            <h1>Activity <span>Registration</span></h1>
+            <p style="margin-top: 20px; font-weight: 600; opacity: 0.9;">
+                Fill out the form to reserve your spot in our activities, workshops, or campus.
+            </p>
+        </div>
+    </header>
+
+    <main class="content-wrapper">
+        <div class="grid-2-cols" style="align-items: start; gap: 40px;">
+            
+            <div class="text-block-cyan">
+                <h2 class="font-head" style="font-size: 24px; margin-bottom: 20px; color: var(--ink);">JOIN <span class="text-sky">US</span></h2>
+                <div style="margin-bottom: 20px;">
+                    <h3 style="color: var(--solar); font-size: 18px; margin-bottom: 5px;">WHY JOIN?</h3>
+                    <p>By participating in our activities, you directly support animal welfare and the conservation of our natural environment.</p>
+                </div>
+                <div style="margin-bottom: 20px;">
+                    <h3 style="color: var(--solar); font-size: 18px; margin-bottom: 5px;">IMPORTANT</h3>
+                    <p>Once the form is sent, our team will contact you within 48 hours to confirm the availability of spots and the payment method.</p>
+                </div>
+            </div>
+
+            <div class="espacio-section" style="padding: 30px; margin: 0; background: white; border: 2px solid var(--sky-border); border-radius: 15px;">
+                <h2 class="font-head" style="font-size: 24px; margin-bottom: 20px;">REGISTRATION <span>FORM</span></h2>
+                <form class="cyan-form">
+                    <input type="text" placeholder="FULL NAME" required>
+                    <input type="email" placeholder="EMAIL ADDRESS" required style="margin-top: 15px;">
+                    <input type="tel" placeholder="PHONE NUMBER" required style="margin-top: 15px;">
+                    
+                    <select style="margin-top: 15px;" required>
+                        <option value="" disabled selected>SELECT ACTIVITY...</option>
+                        <option value="conoce">Educational Activity "Get to know the Shelter"</option>
+                        <option value="caminata">Charity Route "Walking with Paws"</option>
+                        <option value="guardians">Charity Activity "Guardians of the Habitat"</option>
+                        <option value="taller1">Workshop 1: “Emotions and Animals”</option>
+                        <option value="taller2">Workshop 2: “Shelter in Action”</option>
+                        <option value="taller3">Workshop 3: “Green Footprints”</option>
+                        <option value="campus1">Campus 1: “Living Nature”</option>
+                        <option value="campus2">Campus 2: “Active Planet”</option>
+                    </select>
+
+                    <textarea placeholder="YOUR MESSAGE OR SPECIAL OBSERVATIONS" style="margin-top: 15px;" required></textarea>
+                    
+                    <div style="margin: 15px 0; display: flex; align-items: center; gap: 10px;">
+                        <input type="checkbox" id="privacy" required style="width: auto;">
+                        <label for="privacy" style="font-size: 12px; color: var(--ink);">I accept the privacy policy</label>
+                    </div>
+
+                    <button type="submit" style="width: 100%;">SIGN ME UP</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer-bottom">
+        <div class="footer-col">
+            <h3>CONTACT</h3>
+            <p>Av. Mare de Déu de Bellvitge, 100, 110, 08907 L'Hospitalet de Llobregat, Barcelona</p>
+            <p>Tel: 930249416</p>
+        </div>
+        <div class="footer-col">
+            <h3>WRITE TO US</h3>
+            <form class="cyan-form">
+                <input type="text" placeholder="NAME">
+                <textarea placeholder="MESSAGE"></textarea>
+                <button type="submit">SEND</button>
+            </form>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,1332 @@
+/* ============================================================
+   FUENTES
+   Aquí se cargan los tipos de letra que usa la página web.
+   Nunito: letra para el texto normal
+   Barlow Condensed: letra para los títulos grandes
+   ============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Barlow+Condensed:wght@500;700;900&display=swap');
+
+/* ============================================================
+   COLORES Y VALORES GLOBALES
+   Aquí se definen los colores, letras y tamaños que se usan
+   en toda la página. Cambiando un valor aquí, cambia en todas partes.
+   ============================================================ */
+:root {
+    /* --- Colores oscuros (fondos y texto principal) --- */
+    --ink:          #0d2b1a;   /* Verde muy oscuro — texto y fondo principal */
+    --ink-mid:      #1a4a2e;   /* Verde oscuro medio — fondos de sección */
+    --ink-light:    #256038;   /* Verde oscuro claro — fondo alternativo */
+
+    /* --- Colores verdes vivos --- */
+    --sky:          #2ecc71;   /* Verde brillante — color principal de la web */
+    --sky-light:    #58d68d;   /* Verde brillante más claro */
+    --sky-pale:     #d5f5e3;   /* Verde muy suave — fondos claros */
+    --mint:         #2ecc71;   /* Igual que el verde principal */
+    --solar:        #1a7a45;   /* Verde medio — color secundario */
+    --coral:        #2ecc71;   /* Igual que el verde principal */
+
+    /* --- Colores de fondo --- */
+    --bg-white:     #f4fdf8;   /* Blanco con un toque verde muy ligero */
+    --bg-pale:      #e8f8f0;   /* Verde pálido para secciones suaves */
+    --bg-dark:      #0d2b1a;   /* Fondo oscuro (mismo que --ink) */
+
+    /* --- Colores semitransparentes --- */
+    --sky-glass:    rgba(46, 204, 113, 0.12);   /* Verde brillante casi transparente */
+    --sky-border:   rgba(46, 204, 113, 0.3);    /* Verde brillante para bordes suaves */
+    --ink-glass:    rgba(13, 43, 26, 0.7);      /* Verde oscuro semitransparente */
+    --white-glass:  rgba(255, 255, 255, 0.15);  /* Blanco semitransparente */
+
+    /* --- Tipos de letra --- */
+    --font-head:  'Barlow Condensed', sans-serif; /* Letra de los títulos */
+    --font-body:  'Nunito', sans-serif;           /* Letra del texto normal */
+
+    /* --- Bordes redondeados --- */
+    --r-sm:   6px;    /* Poco redondeado — campos de texto, etiquetas */
+    --r-md:   14px;   /* Medio — tarjetas y secciones */
+    --r-lg:   24px;   /* Muy redondeado — bloques grandes */
+    --r-pill: 999px;  /* Forma de pastilla — botones y selector de idioma */
+
+    /* --- Animaciones --- */
+    --ease: cubic-bezier(0.4, 0, 0.2, 1); /* Tipo de movimiento en las animaciones */
+    --t:    0.3s;                          /* Velocidad de las animaciones */
+}
+
+/* ============================================================
+   ESTILOS BASE
+   Elimina márgenes y rellenos por defecto del navegador
+   para que todo se vea igual en todos los navegadores.
+   ============================================================ */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* El tamaño incluye el borde y el relleno */
+}
+
+html {
+    scroll-behavior: smooth;              /* Al pulsar un enlace interno, baja suavemente */
+    -webkit-font-smoothing: antialiased;  /* Las letras se ven más nítidas */
+}
+
+body {
+    background: var(--bg-white);    /* Color de fondo de la página */
+    color: var(--ink);              /* Color del texto */
+    font-family: var(--font-body);  /* Tipo de letra general */
+    line-height: 1.6;               /* Espacio entre líneas de texto */
+    overflow-x: hidden;             /* Evita que aparezca barra de scroll horizontal */
+}
+
+img { max-width: 100%; display: block; } /* Las imágenes no se salen de su contenedor */
+a   { text-decoration: none; }           /* Los enlaces no tienen subrayado */
+
+/* ============================================================
+   BARRA DE NAVEGACIÓN
+   La barra superior con el logo y los enlaces del menú.
+   Se queda fija arriba aunque hagas scroll.
+   ============================================================ */
+.navbar {
+    background: var(--ink);          /* Fondo verde muy oscuro */
+    height: 64px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5%;
+    position: sticky;                /* Se queda fija al hacer scroll */
+    top: 0;
+    z-index: 1000;                   /* Aparece por encima del resto de la página */
+    border-bottom: 3px solid var(--sky); /* Línea verde brillante en la parte de abajo */
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+/* --- Zona donde está el logo --- */
+.logo-area { display: flex; align-items: center; }
+
+/* --- Texto del logo --- */
+.brand-logo-text {
+    font-family: var(--font-head);
+    font-size: 26px;
+    font-weight: 900;
+    letter-spacing: 3px;
+    color: var(--bg-white);    /* Texto blanco */
+    text-transform: uppercase;
+    position: relative;
+}
+
+/* --- Diamante giratorio que aparece antes del texto del logo --- */
+.brand-logo-text::before {
+    content: '◆';
+    color: var(--sky);                              /* Color verde brillante */
+    margin-right: 8px;
+    font-size: 14px;
+    vertical-align: middle;
+    animation: spin-diamond 6s linear infinite;     /* Gira sin parar */
+    display: inline-block;
+}
+
+/* Animación de giro del diamante del logo */
+@keyframes spin-diamond {
+    0%   { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* --- Lista de enlaces del menú, en fila horizontal --- */
+.nav-links {
+    display: flex;
+    list-style: none;
+    height: 64px;        /* Igual de alta que la barra */
+    align-items: center;
+    gap: 0;
+}
+
+/* --- Cada elemento del menú ocupa toda la altura --- */
+.nav-links li {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+/* --- Aspecto de cada enlace del menú --- */
+.nav-links a {
+    color: rgba(255,255,255,0.75);   /* Blanco suave */
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 0 16px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    transition: color var(--t) var(--ease);
+    position: relative;
+}
+
+/* --- Línea verde que aparece debajo del enlace al pasar el ratón --- */
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 16px;
+    right: 16px;
+    height: 3px;
+    background: var(--sky);          /* Verde brillante */
+    transform: scaleX(0);            /* Invisible hasta el hover */
+    transform-origin: left;
+    transition: transform var(--t) var(--ease);
+}
+
+/* --- Efectos al pasar el ratón y en la página activa --- */
+.nav-links a:hover { color: #fff; }                        /* Blanco puro al pasar el ratón */
+.nav-links a:hover::after { transform: scaleX(1); }        /* La línea aparece */
+.nav-links a.active { color: var(--sky); }                 /* Verde en la página actual */
+.nav-links a.active::after { transform: scaleX(1); }       /* La línea siempre visible */
+
+/* --- Botones de redes sociales en la barra de navegación --- */
+.social-header a {
+    color: rgba(255,255,255,0.6) !important;
+    font-size: 13px !important;
+    font-weight: 900 !important;
+    border: 1.5px solid rgba(255,255,255,0.2);
+    border-radius: var(--r-pill);         /* Forma de pastilla */
+    padding: 5px 10px !important;
+    transition: var(--t);
+    height: auto !important;
+}
+
+/* --- Los botones de redes sociales se vuelven verdes al pasar el ratón --- */
+.social-header a:hover {
+    color: var(--sky) !important;
+    border-color: var(--sky);
+}
+
+/* ============================================================
+   MENÚ DESPLEGABLE
+   El submenú que aparece al pasar el ratón sobre algunos enlaces.
+   ============================================================ */
+.dropdown { position: relative; }  /* El menú desplegable se posiciona respecto a este elemento */
+
+/* --- El menú desplegable está oculto hasta que se pase el ratón --- */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 64px;                          /* Aparece justo debajo de la barra */
+    left: 0;
+    background: var(--ink);            /* Fondo verde oscuro */
+    border: 1px solid var(--sky-border);
+    border-top: 3px solid var(--sky);  /* Línea verde arriba */
+    min-width: 170px;
+    z-index: 9999;
+    border-radius: 0 0 var(--r-md) var(--r-md);
+    overflow: hidden;
+    box-shadow: 0 16px 40px rgba(0,0,0,0.4);
+    list-style: none;
+    flex-direction: column;
+}
+
+/* --- El menú aparece al pasar el ratón por encima --- */
+.dropdown:hover .dropdown-content { display: flex; }
+
+/* --- Cada opción del menú ocupa todo el ancho --- */
+.dropdown-content li { width: 100%; height: auto !important; }
+
+/* --- Aspecto de cada enlace dentro del menú desplegable --- */
+.dropdown-content li a {
+    height: auto !important;
+    padding: 13px 20px;
+    font-size: 11px;
+    letter-spacing: 1px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    width: 100%;
+    color: rgba(255,255,255,0.7);
+}
+
+/* --- Las opciones del desplegable no tienen línea animada --- */
+.dropdown-content li a::after { display: none; }
+
+/* --- Al pasar el ratón, el fondo se vuelve verde suave --- */
+.dropdown-content li a:hover {
+    background: var(--sky-glass);  /* Verde muy transparente */
+    color: var(--sky);
+}
+
+/* --- La última opción no tiene línea separadora abajo --- */
+.dropdown-content li:last-child a { border-bottom: none; }
+
+/* ============================================================
+   SECCIÓN PRINCIPAL (HERO)
+   El bloque grande que aparece nada más entrar a la página.
+   ============================================================ */
+.hero-section {
+    background: linear-gradient(135deg, #2ecc71 0%, #1a4a2e 100%); /* Degradado de verde brillante a verde oscuro */
+    color: #fff;
+    padding: 90px 5% 80px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
+}
+
+/* --- Círculos decorativos de fondo (generados por CSS) --- */
+.hero-section::before,
+.hero-section::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    border: 2px solid rgba(255,255,255,0.15);
+    pointer-events: none;  /* No bloquean los clics del usuario */
+}
+
+/* --- Círculo decorativo grande en la esquina superior derecha --- */
+.hero-section::before {
+    width: 500px; height: 500px;
+    top: -200px; right: -100px;
+}
+
+/* --- Anillo punteado giratorio en la esquina inferior izquierda --- */
+.hero-section::after {
+    width: 300px; height: 300px;
+    bottom: -100px; left: -80px;
+    border-style: dashed;
+    animation: rotate-ring 20s linear infinite; /* Gira muy despacio sin parar */
+}
+
+/* Animación del anillo que gira */
+@keyframes rotate-ring {
+    to { transform: rotate(360deg); }
+}
+
+/* --- Título grande de la sección principal --- */
+.hero-section h1,
+.hero-container h1 {
+    font-family: var(--font-head);
+    font-size: clamp(36px, 6vw, 72px);  /* Se adapta al tamaño de la pantalla (entre 36 y 72px) */
+    font-weight: 900;
+    letter-spacing: -1px;
+    line-height: 1.05;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 1;
+}
+
+/* --- Palabra resaltada dentro del título --- */
+.hero-section h1 span,
+.hero-container h1 span {
+    color: var(--sky);  /* Verde brillante para destacar palabras */
+}
+
+/* --- Caja que centra el contenido y limita su anchura --- */
+.hero-container { max-width: 780px; margin: 0 auto; position: relative; z-index: 1; }
+
+/* ============================================================
+   SECCIÓN PRINCIPAL CON VÍDEO DE FONDO
+   ============================================================ */
+.hero-video-area {
+    position: relative;
+    width: 100%;
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* --- Título encima del vídeo --- */
+.hero-video-area h1 {
+    position: absolute;
+    font-family: var(--font-head);
+    font-size: clamp(40px, 7vw, 80px);
+    font-weight: 900;
+    letter-spacing: -1px;
+    text-transform: uppercase;
+    text-shadow: 0 4px 30px rgba(0,0,0,0.6);
+    z-index: 3;        /* Por encima del vídeo y la capa oscura */
+    color: #fff;
+}
+
+/* --- Palabra destacada en el título del vídeo --- */
+.hero-video-area h1 span { color: var(--sky); }
+
+/* --- El vídeo ocupa todo el espacio del bloque --- */
+.video-container {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+}
+
+/* --- Capa oscura sobre el vídeo para que el texto sea legible --- */
+.video-container::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(13,43,26,0.7) 0%,     /* Más oscuro arriba */
+        rgba(26,74,46,0.3) 50%,    /* Más claro en el centro */
+        rgba(13,43,26,0.8) 100%    /* Más oscuro abajo */
+    );
+}
+
+/* --- El vídeo se estira para cubrir todo sin deformarse --- */
+.video-container video {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* ============================================================
+   REJILLA DE TARJETAS
+   Organiza las tarjetas en columnas automáticamente.
+   ============================================================ */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Columnas que se adaptan solas */
+    gap: 28px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 70px 5%;
+    position: relative;
+    z-index: 1;
+}
+
+/* ============================================================
+   TARJETAS DE CONTENIDO
+   ============================================================ */
+.card {
+    background: #fff;
+    border-radius: var(--r-md);
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(13,43,26,0.1);   /* Sombra suave */
+    transition: transform var(--t) var(--ease), box-shadow var(--t) var(--ease);
+    cursor: pointer;
+    border: 2px solid transparent;               /* Borde invisible hasta el hover */
+}
+
+/* --- La tarjeta sube y aparece un borde verde al pasar el ratón --- */
+.card:hover {
+    transform: translateY(-8px) scale(1.01);
+    box-shadow: 0 20px 50px rgba(26,74,46,0.2);  /* Sombra más intensa */
+    border-color: var(--sky);                    /* Borde verde visible */
+}
+
+/* --- Contenedor de la imagen de la tarjeta --- */
+.card-img {
+    width: 100%;
+    height: 500px;
+    overflow: hidden;
+    background: var(--bg-pale);   /* Color de fondo mientras carga la imagen */
+    position: relative;
+}
+
+/* --- La imagen de la tarjeta --- */
+.card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s var(--ease);
+}
+
+/* --- La imagen hace zoom al pasar el ratón sobre la tarjeta --- */
+.card:hover .card-img img { transform: scale(1.07); }
+
+/* --- Texto en la parte inferior de la tarjeta --- */
+.card-label {
+    padding: 18px 22px;
+    font-family: var(--font-head);
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--ink);
+    background: #fff;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: color var(--t);
+}
+
+/* --- Pequeño diamante verde decorativo antes del texto --- */
+.card-label::before {
+    content: '';
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background: var(--sky);         /* Verde brillante */
+    border-radius: 2px;
+    transform: rotate(45deg);       /* Rotado 45° para parecer un diamante */
+    flex-shrink: 0;
+    transition: background var(--t), transform var(--t);
+}
+
+/* --- El texto de la etiqueta se vuelve verde al hover --- */
+.card:hover .card-label { color: var(--sky); }
+
+/* --- El diamante gira y cambia de color al hover --- */
+.card:hover .card-label::before { background: var(--solar); transform: rotate(90deg); }
+
+/* ============================================================
+   CONTENEDOR INTERIOR DE PÁGINAS
+   Limita el ancho del contenido y lo centra en la pantalla.
+   ============================================================ */
+.content-wrapper {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 70px 5%;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    position: relative;
+    z-index: 1;
+}
+
+/* ============================================================
+   BLOQUE DE TEXTO CON ACENTO VERDE
+   Caja con fondo suave y borde izquierdo verde.
+   ============================================================ */
+.text-block-cyan {
+    background: linear-gradient(135deg, rgba(46,204,113,0.08) 0%, rgba(244,253,249,0.9) 100%);
+    border: 1px solid var(--sky-border);
+    border-left: 4px solid var(--sky);  /* Línea verde a la izquierda */
+    border-radius: var(--r-md);
+    padding: 40px;
+}
+
+/* --- Lista de puntos con marcadores personalizados --- */
+.points-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 28px;
+}
+
+/* --- Cada punto de la lista --- */
+.points-list li {
+    padding-left: 28px;
+    position: relative;
+    font-size: 14px;
+    color: var(--ink);
+    line-height: 1.75;
+}
+
+/* --- Icono verde con forma de hoja antes de cada punto --- */
+.points-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 12px;
+    height: 12px;
+    background: var(--sky);              /* Verde brillante */
+    border-radius: 50% 50% 50% 0;       /* Forma de gota */
+    transform: rotate(-45deg);
+}
+
+/* --- Texto resaltado al final del bloque --- */
+.highlight-text {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--ink-mid);
+    border-top: 1px solid var(--sky-border);
+    padding-top: 22px;
+    line-height: 1.8;
+}
+
+/* ============================================================
+   CAJA DE CITA
+   Bloque destacado para mostrar frases importantes.
+   ============================================================ */
+.quote-box {
+    background: var(--ink);        /* Fondo verde muy oscuro */
+    border-radius: var(--r-md);
+    padding: 44px 52px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* --- Comilla decorativa grande en la esquina superior --- */
+.quote-box::before {
+    content: '"';
+    position: absolute;
+    top: -10px;
+    left: 30px;
+    font-size: 120px;
+    color: var(--sky);           /* Verde brillante */
+    font-family: Georgia, serif;
+    line-height: 1;
+    opacity: 0.25;               /* Muy transparente, solo decorativa */
+}
+
+/* --- Línea de color en la parte inferior de la caja --- */
+.quote-box::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--sky) 0%, var(--ink-light) 100%); /* Degradado verde */
+}
+
+/* --- Texto de la cita --- */
+.quote-box p {
+    font-size: 16px;
+    font-style: italic;
+    font-weight: 600;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.8;
+    margin-bottom: 16px;
+    position: relative;
+    z-index: 1;
+}
+
+/* --- Nombre de la persona que dijo la cita --- */
+.quote-box span {
+    font-family: var(--font-head);
+    font-size: 13px;
+    color: var(--sky);           /* Verde brillante */
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 1;
+}
+
+/* ============================================================
+   TARJETAS DE INFORMACIÓN (2 COLUMNAS)
+   ============================================================ */
+.grid-2-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Dos columnas del mismo tamaño */
+    gap: 24px;
+}
+
+/* --- Tarjeta de información --- */
+.info-card {
+    background: #fff;
+    border: 1px solid rgba(46,204,113,0.2);
+    border-top: 4px solid var(--sky);      /* Línea verde en la parte superior */
+    border-radius: var(--r-md);
+    padding: 30px;
+    box-shadow: 0 4px 20px rgba(13,43,26,0.07);
+    transition: var(--t);
+}
+
+/* --- La tarjeta sube al pasar el ratón --- */
+.info-card:hover {
+    box-shadow: 0 12px 40px rgba(26,74,46,0.15);
+    transform: translateY(-4px);
+}
+
+/* --- La segunda tarjeta tiene la línea superior en verde más claro --- */
+.info-card:nth-child(2) { border-top-color: var(--sky-light); }
+
+/* --- Título de la tarjeta --- */
+.info-card h2 {
+    font-family: var(--font-head);
+    font-size: 20px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+    color: var(--ink);
+}
+
+/* --- Palabra resaltada en el título --- */
+.info-card h2 span { color: var(--sky); }
+
+/* --- Texto descriptivo de la tarjeta --- */
+.info-card p {
+    font-size: 13px;
+    color: #3d5c47;      /* Verde grisáceo */
+    line-height: 1.8;
+}
+
+/* ============================================================
+   SECCIÓN ESPACIO
+   Bloque con fondo verde claro para destacar información.
+   ============================================================ */
+.espacio-section {
+    background: var(--bg-pale);                      /* Fondo verde muy claro */
+    border: 1px solid rgba(46,204,113,0.15);
+    border-radius: var(--r-md);
+    padding: 40px;
+}
+
+/* --- Título principal de la sección --- */
+.espacio-section h2 {
+    font-family: var(--font-head);
+    font-size: 28px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 6px;
+    color: var(--ink);
+}
+
+/* --- Palabra destacada en el título --- */
+.espacio-section h2 span { color: var(--sky); }
+
+/* --- Subtítulo pequeño en verde --- */
+.espacio-section h3 {
+    font-family: var(--font-body);
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: var(--sky);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    font-weight: 800;
+}
+
+/* --- Texto descriptivo de la sección --- */
+.espacio-section > p {
+    font-size: 14px;
+    color: #3d5c47;
+    line-height: 1.8;
+    margin-bottom: 28px;
+}
+
+/* --- Caja blanca interior con detalles del taller --- */
+.taller-details {
+    background: #fff;
+    border-radius: var(--r-sm);
+    padding: 24px 28px;
+    box-shadow: 0 2px 12px rgba(13,43,26,0.06);
+}
+
+/* --- Título de la caja interior --- */
+.taller-details h4 {
+    font-family: var(--font-head);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 16px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* --- Lista sin estilos por defecto --- */
+.taller-details ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+
+/* --- Cada elemento de la lista --- */
+.taller-details ul li {
+    font-size: 13px;
+    color: #3d5c47;
+    padding-left: 20px;
+    position: relative;
+}
+
+/* --- Flecha verde decorativa antes de cada elemento --- */
+.taller-details ul li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--sky);
+    font-weight: 900;
+}
+
+/* --- Texto en negrita dentro de cada elemento --- */
+.taller-details ul li strong { color: var(--ink); font-weight: 700; }
+
+/* ============================================================
+   SECCIÓN DE COLABORADORES / PARTNERS
+   Muestra los logos de las entidades colaboradoras.
+   ============================================================ */
+.partners-section {
+    background: var(--ink-mid);   /* Fondo verde oscuro medio */
+    padding: 40px 5%;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+/* --- Texto generado automáticamente encima de los logos --- */
+.partners-section::before {
+    content: 'TECNOLOGIES QUE UTILITZEM';
+    display: block;
+    font-family: var(--font-head);
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: var(--sky-light);   /* Verde claro */
+    text-align: center;
+    margin-bottom: -10px;
+    opacity: 0.6;
+}
+
+/* --- Fila con todos los logos en horizontal --- */
+.partners-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 44px;
+    flex-wrap: wrap;
+}
+
+/* --- Los logos se muestran en blanco con poca opacidad --- */
+.partners-row img {
+    height: 80px;
+    width: auto;
+    object-fit: contain;
+    filter: brightness(0) invert(1);  /* Convierte el logo a blanco */
+    opacity: 0.35;
+    transition: opacity var(--t), filter var(--t);
+}
+
+/* --- Al pasar el ratón, el logo se ve completo con tono verde --- */
+.partners-row img:hover {
+    opacity: 1;
+    filter: brightness(0) invert(1) sepia(1) saturate(4) hue-rotate(95deg); /* Efecto verde */
+}
+
+/* ============================================================
+   SECCIÓN DEL MAPA
+   ============================================================ */
+.map-outer {
+    background: var(--ink);   /* Fondo verde muy oscuro */
+    padding: 60px 5%;
+    position: relative;
+    z-index: 1;
+}
+
+/* --- Marco interior del mapa con bordes redondeados --- */
+.map-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    border-radius: var(--r-lg);
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    border: 3px solid var(--sky-border);  /* Borde verde suave */
+}
+
+/* --- Filtro aplicado al mapa para que encaje con los colores de la web --- */
+.map-inner iframe,
+.map-container iframe {
+    display: block;
+    filter: grayscale(0.5) contrast(1.1);  /* Gris suave y algo más de contraste */
+}
+
+/* --- Contenedor alternativo del mapa --- */
+.map-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 5%;
+    border-radius: var(--r-lg);
+    overflow: hidden;
+}
+
+/* ============================================================
+   PIE DE PÁGINA
+   ============================================================ */
+.footer-bottom {
+    background: var(--ink);        /* Fondo verde muy oscuro */
+    padding: 64px 5% 40px;
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    position: relative;
+    z-index: 1;
+}
+
+/* --- Línea de color en la parte superior del pie de página --- */
+.footer-bottom::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--sky);  /* Línea verde brillante */
+}
+
+/* --- Columna del pie de página --- */
+.footer-col {
+    flex: 1;
+    min-width: 200px;
+    max-width: 320px;
+}
+
+/* --- Título de cada columna del pie --- */
+.footer-col h3 {
+    font-family: var(--font-head);
+    font-size: 14px;
+    font-weight: 900;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--sky);            /* Verde brillante */
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+/* --- Texto informativo en las columnas del pie --- */
+.footer-col p {
+    font-size: 13px;
+    color: rgba(255,255,255,0.55);
+    line-height: 2;
+    margin-bottom: 6px;
+}
+
+/* ============================================================
+   FORMULARIO DE CONTACTO
+   (El nombre "cyan" viene de una versión anterior del diseño)
+   ============================================================ */
+.cyan-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* --- Campos de texto del formulario --- */
+.cyan-form input,
+.cyan-form textarea {
+    background: rgba(255,255,255,0.06);
+    border: 1.5px solid rgba(255,255,255,0.12);
+    border-radius: var(--r-sm);
+    color: #fff;
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 600;
+    padding: 11px 14px;
+    width: 100%;
+    transition: var(--t);
+    outline: none;
+}
+
+/* --- Texto de ejemplo dentro de los campos (placeholder) --- */
+.cyan-form input::placeholder,
+.cyan-form textarea::placeholder {
+    color: rgba(255,255,255,0.25);
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* --- El borde del campo se vuelve verde cuando el usuario hace clic --- */
+.cyan-form input:focus,
+.cyan-form textarea:focus {
+    border-color: var(--sky);
+    background: rgba(46,204,113,0.08);  /* Fondo verde muy sutil */
+}
+
+/* --- El área de texto permite hacerse más alta arrastrando --- */
+.cyan-form textarea {
+    resize: vertical;
+    min-height: 90px;
+}
+
+/* --- Botón de enviar del formulario --- */
+.cyan-form button {
+    background: linear-gradient(135deg, #2ecc71 0%, #1a4a2e 100%); /* Verde brillante a verde oscuro */
+    border: none;
+    color: #fff;
+    font-family: var(--font-head);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 12px 24px;
+    border-radius: var(--r-pill);
+    cursor: pointer;
+    transition: var(--t);
+    align-self: flex-start;
+    box-shadow: 0 4px 16px rgba(26,74,46,0.4);
+}
+
+/* --- El botón sube un poco al pasar el ratón --- */
+.cyan-form button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(26,74,46,0.5);
+}
+
+/* ESTRUCTURA PRINCIPAL DE PÁGINA INTERIOR */
+
+/* --- Contenedor de dos columnas: la segunda es un poco más ancha --- */
+.main-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 60px 5%;
+    position: relative;
+    z-index: 1;
+}
+
+/* --- Caja para mostrar vídeos con bordes redondeados --- */
+.video-box {
+    border-radius: var(--r-md);
+    overflow: hidden;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+    margin-bottom: 24px;
+    border: 3px solid var(--sky-border);
+    background: #000;
+}
+
+/* --- El vídeo ocupa todo el ancho de la caja --- */
+.video-box video { width: 100%; display: block; }
+
+/* --- Título de sección en mayúsculas --- */
+.title-q {
+    font-family: var(--font-head);
+    font-size: 26px;
+    font-weight: 900;
+    text-align: center;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--ink);
+}
+
+/* --- Palabra destacada en el título de sección --- */
+.title-q span { color: var(--sky); }
+
+/* --- Grupo de tarjetas de lista (bullets) --- */
+.bullets { display: flex; flex-direction: column; gap: 10px; }
+
+/* --- Tarjeta individual de un punto de lista --- */
+.bullet-card {
+    background: var(--bg-pale);                   /* Fondo verde muy claro */
+    border: 1px solid rgba(46,204,113,0.2);
+    border-radius: var(--r-sm);
+    padding: 13px 16px;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink);
+    transition: var(--t);
+}
+
+/* --- La tarjeta se desplaza a la derecha al pasar el ratón --- */
+.bullet-card:hover {
+    background: rgba(46,204,113,0.08);
+    border-color: var(--sky);
+    transform: translateX(4px);
+}
+
+/* --- Pequeño cuadrado verde en forma de diamante (decorativo) --- */
+.sq {
+    width: 10px;
+    height: 10px;
+    background: var(--sky);    /* Verde brillante */
+    flex-shrink: 0;
+    margin-top: 3px;
+    border-radius: 2px;
+    transform: rotate(45deg);  /* Rotado para parecer un diamante */
+}
+
+/* --- Rejilla de dos columnas iguales --- */
+.top-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+/* --- Rejilla de cuatro fotos en fila --- */
+.photos-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+
+/* --- Caja individual de una foto --- */
+.photo-box {
+    background: var(--bg-pale);
+    border-radius: var(--r-sm);
+    overflow: hidden;
+    text-align: center;
+    border: 1px solid rgba(46,204,113,0.15);
+    transition: var(--t);
+}
+
+/* --- Al pasar el ratón, aparece un borde verde y sombra --- */
+.photo-box:hover { border-color: var(--sky); box-shadow: 0 6px 20px rgba(26,74,46,0.15); }
+
+/* --- La imagen de la foto --- */
+.photo-box img {
+    width: 100%; height: 100px;
+    object-fit: cover;
+    transition: transform 0.4s;
+}
+
+/* --- La imagen hace zoom al pasar el ratón --- */
+.photo-box:hover img { transform: scale(1.08); }
+
+/* --- Texto o pie de la foto --- */
+.photo-box p {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--ink);
+    padding: 8px;
+    font-family: var(--font-head);
+}
+
+/* --- Fila de detalles que ocupa todo el ancho, dividida en 5 columnas --- */
+.details-row {
+    grid-column: 1 / -1;         /* Ocupa todo el ancho de la rejilla padre */
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    background: var(--bg-pale);
+    border: 1px solid rgba(46,204,113,0.2);
+    border-top: 4px solid var(--sky);  /* Línea verde arriba */
+    padding: 32px;
+    border-radius: var(--r-md);
+    margin-top: 30px;
+    text-align: center;
+}
+
+/* --- Columna individual dentro de la fila de detalles --- */
+.detail-item {
+    border-right: 1px solid rgba(46,204,113,0.15);  /* Línea separadora derecha */
+    padding: 0 16px;
+}
+
+/* --- La última columna no tiene línea separadora --- */
+.detail-item:last-child { border-right: none; }
+
+/* --- Título del dato dentro de la columna --- */
+.detail-item h4 {
+    font-family: var(--font-head);
+    color: var(--sky);           /* Verde brillante */
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+/* --- Valor o descripción del dato --- */
+.detail-item p { font-size: 12px; color: #3d5c47; line-height: 1.6; }
+
+/* --- Bloque de cita sobre fondo claro --- */
+.quote-area {
+    grid-column: 1 / -1;
+    margin-top: 40px;
+    padding: 50px;
+    border: 1px solid rgba(46,204,113,0.2);
+    text-align: center;
+    border-radius: var(--r-md);
+    background: var(--bg-pale);
+}
+
+/* --- Texto de la cita --- */
+.quote-area p {
+    font-size: 18px;
+    font-weight: 600;
+    font-style: italic;
+    color: var(--ink-mid);
+    margin-bottom: 16px;
+    line-height: 1.8;
+}
+
+/* --- Atribución de la cita en verde brillante --- */
+.quote-area span {
+    font-family: var(--font-head);
+    color: var(--sky);
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+/* --- Título de sección "espai" --- */
+.espai-h {
+    font-family: var(--font-head);
+    text-align: center;
+    font-size: 26px;
+    font-weight: 900;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--ink);
+}
+
+/*CLASES DE COLOR Y FUENTE DE USO RÁPIDO(variables) */
+h1 span, h2 span { color: var(--sky); }          /* Palabras clave en verde */
+.text-sky   { color: var(--sky); }               /* Texto en verde brillante */
+.text-solar { color: var(--solar); }             /* Texto en verde medio */
+.text-mint  { color: var(--mint); }              /* Texto en verde brillante (igual que sky) */
+.font-head  { font-family: var(--font-head); }   /* Aplica la letra de títulos */
+
+/*  SELECTOR DE IDIOMA  El botón para cambiar el idioma de la página. */
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+/* --- Contenedor del selector de idioma --- */
+.lang-switcher {
+    position: relative;
+}
+
+/* --- Botón que muestra el idioma seleccionado actualmente --- */
+.lang-current {
+    background: transparent;
+    border: 1.5px solid rgba(255,255,255,0.2);
+    border-radius: var(--r-pill);
+    color: rgba(255,255,255,0.6);
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    cursor: pointer;
+    transition: var(--t);
+    white-space: nowrap;
+}
+
+/* --- El botón de idioma se vuelve verde al pasar el ratón --- */
+.lang-current:hover,
+.lang-switcher:hover .lang-current {
+    color: var(--sky);
+    border-color: var(--sky);
+}
+
+/* --- Lista de idiomas disponibles, oculta por defecto --- */
+.lang-dropdown {
+    display: none;
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    background: var(--ink);
+    border: 1px solid var(--sky-border);
+    border-top: 3px solid var(--sky);         /* Línea verde arriba */
+    border-radius: 0 0 var(--r-md) var(--r-md);
+    list-style: none;
+    min-width: 80px;
+    z-index: 9999;
+    overflow: hidden;
+    box-shadow: 0 16px 40px rgba(0,0,0,0.4);
+    flex-direction: column;
+}
+
+/* --- La lista de idiomas aparece al pasar el ratón --- */
+.lang-switcher:hover .lang-dropdown {
+    display: flex;
+}
+
+/* --- Cada opción de idioma en la lista --- */
+.lang-dropdown li a {
+    display: block;
+    padding: 11px 18px;
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.65);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    transition: var(--t);
+    text-decoration: none;
+}
+
+/* --- La última opción no tiene línea separadora --- */
+.lang-dropdown li:last-child a {
+    border-bottom: none;
+}
+
+/* --- El idioma activo y el que está bajo el ratón se muestran en verde --- */
+.lang-dropdown li a:hover,
+.lang-dropdown li a.lang-active {
+    background: var(--sky-glass);  /* Fondo verde muy suave */
+    color: var(--sky);
+}
+
+/* --- En pantallas pequeñas, el botón de idioma es más pequeño --- */
+@media (max-width: 768px) {
+    .lang-current { font-size: 10px; padding: 4px 10px; }
+}
+
+/* --- Zona invisible para que el menú no se cierre al mover el ratón hacia él --- */
+.lang-switcher::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    height: 12px;
+}
+
+/* --- Logo en formato imagen (en lugar de texto) --- */
+.brand-logo-img {
+    height: 38px;
+    width: auto;
+    display: block;
+}
+
+/*boton inscribirse*/
+.cyan-button{
+    background-color: #3ca374; /* verd institucional del campus */
+    color: white;
+    padding: 10px 26px; /* més petit */
+    border: none;
+    border-radius: 40px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+    letter-spacing: 0.4px;
+}
+
+.cyan-button:hover{
+    background-color: #2e8b5f; /* verd més fosc al hover */
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.22);
+}
+
+.cyan-button:active{
+    transform: translateY(0px);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+}
+
+
+
+
+/* ============================================================
+   ADAPTACIÓN A DIFERENTES TAMAÑOS DE PANTALLA
+   El diseño cambia según si se ve en tablet, móvil, etc.
+   ============================================================ */
+
+/* --- Pantallas medianas (tablets): hasta 992px de ancho --- */
+@media (max-width: 992px) {
+    .main-wrapper        { grid-template-columns: 1fr; }                   /* Una sola columna */
+    .grid-2-cols         { grid-template-columns: 1fr; }                   /* Una sola columna */
+    .top-grid            { grid-template-columns: 1fr; }
+    .photos-grid         { grid-template-columns: repeat(2, 1fr); }        /* 2 fotos por fila */
+    .details-row         { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .detail-item         { border-right: none; border-bottom: 1px solid rgba(46,204,113,0.15); padding: 16px 0; }
+    .detail-item:last-child { border-bottom: none; }
+}
+
+/* --- Móvil: hasta 768px de ancho --- */
+@media (max-width: 768px) {
+    .navbar              { padding: 0 4%; }
+    .nav-links a         { padding: 0 10px; font-size: 10px; letter-spacing: 0.5px; }
+    .brand-logo-text     { font-size: 20px; }
+    .hero-section        { padding: 60px 5% 50px; }
+    .hero-video-area     { min-height: 340px; }
+    .grid-container      { grid-template-columns: 1fr; padding: 50px 5%; }
+    .footer-bottom       { flex-direction: column; gap: 36px; }
+    .footer-col          { max-width: 100%; }
+    .partners-row        { gap: 24px; }
+    .partners-row img    { height: 26px; }
+    .text-block-cyan,
+    .espacio-section     { padding: 26px 22px; }
+    .quote-box           { padding: 32px 24px; }
+    .map-outer           { padding: 40px 4%; }
+}
+
+/* --- Móvil pequeño: hasta 480px de ancho --- */
+@media (max-width: 480px) {
+    .photos-grid         { grid-template-columns: 1fr 1fr; }
+    .details-row         { grid-template-columns: 1fr; }
+    .nav-links           { gap: 0; }
+}

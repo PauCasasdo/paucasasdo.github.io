@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - ECOSAVERS</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        /* Correction to see the text in the form within the light area */
+        .espacio-section .cyan-form input, 
+        .espacio-section .cyan-form textarea,
+        .espacio-section .cyan-form select {
+            color: var(--ink) !important; /* Dark color to be readable */
+            background: rgba(0, 180, 216, 0.05);
+            border: 1.5px solid var(--sky-border);
+        }
+        .espacio-section .cyan-form input::placeholder, 
+        .espacio-section .cyan-form textarea::placeholder {
+            color: rgba(13, 27, 42, 0.4);
+        }
+    </style>
+</head>
+<body>
+
+      <nav class="navbar">
+    <div class="logo-area">
+    <img src="../img/ECOSAVERSLOGO.png" alt="ECOSAVERS" class="brand-logo-img">
+    </div>
+    <ul class="nav-links">
+        <li><a href="../index.html">HOME</a></li>
+        <li class="dropdown">
+            <a href="ofertes.html" class="dropbtn">OUR OFFERS</a>
+            <ul class="dropdown-content">
+                <li><a href="activitats.html">ACTIVITIES</a></li>
+                <li><a href="tallers.html">WORKSHOPS</a></li>
+                <li><a href="campus.html">CAMPUS</a></li>
+            </ul>
+        </li>
+        <li><a href="ecosavers.html">ECOSAVERS</a></li>
+        <li><a href="centres_educatius.html">SCHOOLS</a></li>
+        <li><a href="contacte.html">CONTACT</a></li>
+    </ul>
+    <div class="navbar-right">
+        <div class="lang-switcher">
+            <button class="lang-current">EN ▾</button>
+            <ul class="lang-dropdown">
+                <li><a href="../contacte.html">CA</a></li>
+                <li><a href="../ecosaversCAST/contacto.html">ES</a></li>
+                <li><a href="../ecosaversENG/indexENG.html" class="lang-active">EN</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+    <header class="hero-section">
+        <div class="hero-container">
+            <h1>Contact <span>Us</span></h1>
+            <p style="margin-top: 20px; font-weight: 600; opacity: 0.9;">
+                Do you have questions about our activities, workshops, or the campus? We are here to help.
+            </p>
+        </div>
+    </header>
+
+    <main class="content-wrapper">
+        <div class="grid-2-cols" style="align-items: start; gap: 40px;">
+            
+            <div class="text-block-cyan">
+                <h2 class="font-head" style="font-size: 24px; margin-bottom: 20px; color: var(--ink);">CONTACT <span class="text-sky">DETAILS</span></h2>
+                <div style="margin-bottom: 20px;">
+                    <h3 style="color: var(--solar); font-size: 18px; margin-bottom: 5px;">ADDRESS</h3>
+                    <p>Av. Mare de Déu de Bellvitge, 100, 110, 08907 L'Hospitalet de Llobregat, Barcelona</p>
+                </div>
+                <div style="margin-bottom: 20px;">
+                    <h3 style="color: var(--solar); font-size: 18px; margin-bottom: 5px;">PHONE</h3>
+                    <p>93 024 94 16</p>
+                </div>
+                <div style="margin-bottom: 20px;">
+                    <h3 style="color: var(--solar); font-size: 18px; margin-bottom: 5px;">EMAIL</h3>
+                    <p>info@ecosavers.es</p>
+                </div>
+                <div style="margin-top: 30px;">
+                    <h3 style="color: var(--ink); font-size: 18px; margin-bottom: 10px;">FOLLOW US</h3>
+                    <p>Stay up to date with all our environmental news and activities.</p>
+                </div>
+            </div>
+
+            <div class="espacio-section" style="padding: 30px; margin: 0; background: white; border: 2px solid var(--sky-border); border-radius: 15px;">
+                <h2 class="font-head" style="font-size: 24px; margin-bottom: 20px;">SEND US A <span>MESSAGE</span></h2>
+                <form class="cyan-form">
+                    <input type="text" placeholder="FULL NAME" required>
+                    <input type="email" placeholder="EMAIL ADDRESS" required style="margin-top: 15px;">
+                    
+                    <select style="margin-top: 15px;">
+                        <option value="" disabled selected>INTERESTED IN...</option>
+                        <option value="activities">Activities & Routes</option>
+                        <option value="workshops">Educational Workshops</option>
+                        <option value="campus">Thematic Campus</option>
+                        <option value="schools">Projects for Schools</option>
+                        <option value="others">Other inquiries</option>
+                    </select>
+
+                    <textarea placeholder="YOUR MESSAGE" style="margin-top: 15px;" required></textarea>
+                    
+                    <div style="margin: 15px 0; display: flex; align-items: center; gap: 10px;">
+                        <input type="checkbox" id="privacy" required style="width: auto;">
+                        <label for="privacy" style="font-size: 12px; color: var(--ink);">I accept the privacy policy</label>
+                    </div>
+
+                    <button type="submit" style="width: 100%;">SEND INQUIRY</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer-bottom">
+        <div class="footer-col">
+            <h3>CONTACT</h3>
+            <p>BARCELONA 57-59</p>
+            <p>Tel: 930249416</p>
+        </div>
+        <div class="footer-col">
+            <h3>WRITE TO US</h3>
+            <form class="cyan-form">
+                <input type="text" placeholder="NAME">
+                <textarea placeholder="MESSAGE"></textarea>
+                <button type="submit">SEND</button>
+            </form>
+        </div>
+    </footer>
+
+</body>
+</html>

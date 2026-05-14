@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscripció - Nubotica</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Correcció per veure la lletra en el formulari de la zona clara */
+        .espacio-section .cyan-form input, 
+        .espacio-section .cyan-form textarea,
+        .espacio-section .cyan-form select {
+            color: var(--ink) !important; /* Color fosc per ser llegible */
+            background: rgba(0, 180, 216, 0.05);
+            border: 1.5px solid var(--sky-border);
+        }
+        .espacio-section .cyan-form input::placeholder, 
+        .espacio-section .cyan-form textarea::placeholder {
+            color: rgba(13, 27, 42, 0.4);
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+    <div class="logo-area">
+    <img src="./img/ECOSAVERSLOGO.png" alt="ECOSAVERS" class="brand-logo-img">
+    </div>
+    <ul class="nav-links">
+        <li><a href="index.html">HOME</a></li>
+        <li class="dropdown">
+            <a href="ofertes.html" class="dropbtn">LES NOSTRES OFERTES</a>
+            <ul class="dropdown-content">
+                <li><a href="activitats.html">ACTIVITATS</a></li>
+                <li><a href="tallers.html">TALLERS</a></li>
+                <li><a href="campus.html">CAMPUS</a></li>
+            </ul>
+        </li>
+        <li><a href="ecosavers.html">ECOSAVERS</a></li>
+        <li><a href="centres_educatius.html">CENTRES EDUCATIUS</a></li>
+        <li><a href="contacte.html">CONTACTE</a></li>
+    </ul>
+    <div class="navbar-right">
+        <div class="lang-switcher">
+            <button class="lang-current">CA ▾</button>
+            <ul class="lang-dropdown">
+                <li><a href="index.html" class="lang-active">CA</a></li>
+                <li><a href="./ecosaversCAST/indexCAST.html">ES</a></li>
+                <li><a href="./ecosaversENG/indexENG.html">ENG</a></li>
+            </ul>
+        </div>
+</nav>
+
+
+    <header class="hero-section">
+        <div class="hero-container">
+            <h1>FULL INSCRIPCIO</span></h1>
+            <p style="margin-top: 15px; font-weight: 600;">APUNTAT.</p>
+        </div>
+    </header>
+
+    <main class="content-wrapper">
+        <div class="grid-2-cols">
+            </div>
+
+            <div class="espacio-section">
+                <h2 class="font-head">APUNTAT A UNA <span class="text-sky">ACTIVITAT</span></h2>
+                <h3 style="margin-bottom: 25px; font-size: 11px; letter-spacing: 2px;">APUNTAT</h3>
+                
+                <form class="cyan-form">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                        <input type="text" placeholder="NOM I COGNOMS" required>
+                        <input type="tel" placeholder="TELÈFON">
+                    </div>
+                    
+                    <input type="email" placeholder="CORREU ELECTRÒNIC" required style="margin-top: 15px;">
+                    
+                    <select style="margin-top: 15px;">
+                        <option value="" disabled selected>INTERESSAT EN...</option>
+                        <option value="activitats">Activitat “Adopta amb Coneixement”</option>
+                        <option value="activitats">Activitat Educativa “Respectem els Animals”</option>
+                         <option value="activitats">Activitat Educativa “Mans que Ajuden”</option>
+                        <option value="activitats">Activitat Educativa “Coneix el Refugi”</option>
+                        <option value="activitats">Ruta Solidaria “Caminata con Patas”</option>
+                        <option value="activitats">Activitat solidaria "Guardians de l'habitat"</option>
+                        <option value="tallers">Taller 1: “Emocions i Animals”</option>
+                         <option value="tallers">Taller 2: “Refugi en Acció”</option>
+                         <option value="tallers">Taller 3: “Petjades Verdes”</option>
+                        <option value="campus">Campus 1: “Natura Viva”</option>
+                        <option value="campus">Campus 2: “Planeta Actiu”</option>
+                    </select>
+
+                    <textarea placeholder="EL TEU MISSATGE" style="margin-top: 15px;" required></textarea>
+                    
+                    <div style="margin: 15px 0; display: flex; align-items: center; gap: 10px;">
+                        <input type="checkbox" id="privacy" required style="width: auto;">
+                        <label for="privacy" style="font-size: 12px; color: var(--ink);">Accepto la política de privacitat</label>
+                    </div>
+
+                    <button type="submit" style="width: 100%;">apuntar-me</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer-bottom">
+        <div class="footer-col">
+            <h3>CONTACTE</h3>
+            <p>BARCELONA 57-59</p>
+            <p>Tel: 930249416</p>
+        </div>
+        <div class="footer-col">
+            <h3>ECOSAVERS</h3>
+            <p>© 2024 Ecosavers</p>
+        </div>
+    </footer>
+
+</body>
+</html>
